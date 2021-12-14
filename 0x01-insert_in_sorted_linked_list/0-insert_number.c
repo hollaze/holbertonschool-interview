@@ -6,36 +6,35 @@
  *
  * @head: head node
  * @number: value in the node
- * @return sorted node
+ * Return: sorted node
  */
 
 listint_t *insert_node(listint_t **head, int number)
 {
-        listint_t *new;
-        listint_t *current;
+	listint_t *new;
+	listint_t *current;
 
-        current = *head;
+	current = *head;
 
-        new = malloc(sizeof(listint_t));
+	new = malloc(sizeof(listint_t));
 
-        if (new == NULL)
-                return (NULL);
+	if (new == NULL)
+		return (NULL);
 
-        new->n = number;
-        new->next = NULL;
+	new->n = number;
+	new->next = NULL;
 
-        if (*head == NULL)
-                *head = new;
-        else
-        {
-                while (current->next != NULL && current->next->n <= number)
-                {
-                        current = current->next;
-                }
-                current->n = number;
-                current = new;
-        
-        }
+	if (*head == NULL)
+		*head = new;
+	else
+	{
+		while (current->next != NULL && current->next->n <= number)
+		{
+			current = current->next;
+		}
+		current->n = number;
+		current = new;
+	}
 
-        return (new);
+	return (new);
 }
