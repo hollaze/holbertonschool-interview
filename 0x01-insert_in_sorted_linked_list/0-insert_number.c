@@ -35,7 +35,7 @@ listint_t *insert_node(listint_t **head, int number)
 	{
 		/* current->next->n is the last node value we are in */
 		/* new->n is the node value we want to place */
-		if (current->next == NULL || current->next->n >= new->n)
+		if (current->next == NULL || current->next->n > new->n)
 		{
 			/* set where the node needs to be placed */
 			new->next = current->next;
