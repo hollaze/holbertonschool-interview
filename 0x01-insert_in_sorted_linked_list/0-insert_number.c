@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "lists.h"
 
 /**
@@ -14,26 +15,36 @@ listint_t *insert_node(listint_t **head, int number)
 	listint_t *new;
 	listint_t *current;
 
-	current = *head;
-
 	new = malloc(sizeof(listint_t));
 
 	if (new == NULL)
 		return (NULL);
 
 	new->n = number;
-	new->next = NULL;
 
 	if (*head == NULL)
-		*head = new;
-	else
 	{
-		while (current->next != NULL && current->next->n <= number)
+		new->next = *head;
+		*head = new;
+		return (new);
+	}
+
+	current = *head;
+
+	while (current->next != NULL)
+	{
+		/* current->next->n is the last node value we are in */
+		/* new->n is the node value we want to place */
+		if (current->next == NULL || current->next->n >= new->n)
 		{
-			current = current->next;
+			/* set where the node needs to be placed */
+			new->next = current->next;
+			/* place the node */
+			current->next = new;
+			break;
 		}
-		current->n = number;
-		current = new;
+		/* go through linked list */
+		current = current->next;
 	}
 
 	return (new);
