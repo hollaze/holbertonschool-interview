@@ -30,6 +30,15 @@ listint_t *insert_node(listint_t **head, int number)
 
 	current = *head;
 
+	/* add node at the beginning if value is lower than */
+	/* first node value */
+	if (current->n > new->n)
+	{
+		new->next = current;
+		*head = new;
+		return (new);
+	}
+
 	while (current->next != NULL)
 	{
 		/* current->next->n is the last node value we are in */
@@ -40,10 +49,15 @@ listint_t *insert_node(listint_t **head, int number)
 			new->next = current->next;
 			/* place the node */
 			current->next = new;
-			break;
+			return (new);
 		}
 		/* go through linked list */
 		current = current->next;
+	}
+
+	if (current->n <= new->n)
+	{
+		add_nodeint_end(head, number);
 	}
 
 	return (new);
