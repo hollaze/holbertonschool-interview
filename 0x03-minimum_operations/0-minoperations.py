@@ -43,6 +43,7 @@ def minOperations(n):
         Number of operations
     """
 
+    minActionNumber = 0
     numberOfActions = 0
     divResult = 0
     dividedBy = 0
@@ -58,15 +59,10 @@ def minOperations(n):
         if n % i == 0:
             divResult = n / i
             dividedBy = i
-            break
+            numberOfActions = divResult + dividedBy
+            if minActionNumber == 0:
+                minActionNumber = numberOfActions
+            elif numberOfActions < minActionNumber:
+                minActionNumber = dividedBy + divResult
 
-    if n % 4 == 0 and n % 3 == 0:
-        numberOfActions = n / 4 + n / 3
-        return (int(numberOfActions))
-
-    # handles divided by 3 and all non prime numbers
-    elif isPrimeNumber(dividedBy) is False:
-        numberOfActions = dividedBy + divResult
-        return (int(numberOfActions))
-
-    return (numberOfActions)
+    return (minActionNumber)
