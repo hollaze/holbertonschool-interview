@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 """
 In a text file, there is a single character H.
-Your text editor can execute only two operations in this file: Copy All and Paste.
+Your text editor can execute only two operations in this file:
+Copy All and Paste.
+
 Given a number n, write a method that calculates the fewest number of
 operations needed to result in exactly n H characters in the file.
 
 Example:
 n = 9
-H => Copy All => Paste => HH => Paste =>HHH => Copy All => Paste => HHHHHH => Paste => HHHHHHHHH
+H => Copy All => Paste => HH => Paste =>HHH =>
+Copy All => Paste => HHHHHH => Paste => HHHHHHHHH
 Number of operations: 6
 """
 
@@ -32,10 +35,10 @@ def minOperations(n):
     """
     minOperations : Calculates the fewest number of
                     operations needed to result in exactly n H
-    
+
     Parameter :
         (int) n : number of H to get
-    
+
     Return :
         Number of operations
     """
@@ -47,7 +50,7 @@ def minOperations(n):
     if n <= 1:
         return (numberOfActions)
 
-    if isPrimeNumber(n) == False:
+    if isPrimeNumber(n) is False:
         numberOfActions = n
         return (numberOfActions)
 
@@ -62,7 +65,7 @@ def minOperations(n):
         return (int(numberOfActions))
 
     # handles divided by 3 and all non prime numbers
-    elif isPrimeNumber(dividedBy) == False:
+    elif isPrimeNumber(dividedBy) is False:
         numberOfActions = dividedBy + divResult
         return (int(numberOfActions))
 
