@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sympy
 """
 In a text file, there is a single character H.
 Your text editor can execute only two operations in this file:
@@ -43,11 +42,9 @@ def minOperations(n):
             numberOfActions = divResult + dividedBy
             if minActionNumber == 0:
                 minActionNumber = numberOfActions
-            elif numberOfActions < minActionNumber:
+            if numberOfActions < minActionNumber:
                 minActionNumber = dividedBy + divResult
+            elif numberOfActions > minActionNumber:
+                return (int(minActionNumber))
 
-    if sympy.isprime(n) is True:
-        numberOfActions = n
-        return (numberOfActions)
-
-    return (int(minActionNumber))
+    return (n)
