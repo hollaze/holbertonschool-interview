@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import sympy
 """
 In a text file, there is a single character H.
 Your text editor can execute only two operations in this file:
@@ -13,22 +14,6 @@ H => Copy All => Paste => HH => Paste =>HHH =>
 Copy All => Paste => HHHHHH => Paste => HHHHHHHHH
 Number of operations: 6
 """
-
-
-def isPrimeNumber(n):
-    """
-    isPrimeNumber : Find is n is a prime number
-
-    Parameter :
-        (int) n : number
-
-    Return :
-        True if n is a prime number, False otherwise
-    """
-    for i in range(2, n - 1):
-        if n % i == 0:
-            return (True)
-    return (False)
 
 
 def minOperations(n):
@@ -49,11 +34,7 @@ def minOperations(n):
     dividedBy = 0
 
     if n <= 1:
-        return (numberOfActions)
-
-    if isPrimeNumber(n) is False:
-        numberOfActions = n
-        return (numberOfActions)
+        return (minActionNumber)
 
     for i in range(2, n - 1):
         if n % i == 0:
@@ -64,5 +45,9 @@ def minOperations(n):
                 minActionNumber = numberOfActions
             elif numberOfActions < minActionNumber:
                 minActionNumber = dividedBy + divResult
+
+    if sympy.isprime(n) is True:
+        numberOfActions = n
+        return (numberOfActions)
 
     return (int(minActionNumber))
