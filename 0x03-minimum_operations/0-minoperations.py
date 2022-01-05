@@ -65,4 +65,4 @@ def minOperations(n):
             elif numberOfActions < minActionNumber:
                 minActionNumber = dividedBy + divResult
 
-    return (minActionNumber)
+    return (int(minActionNumber))
