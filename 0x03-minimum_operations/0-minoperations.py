@@ -13,20 +13,6 @@ Number of operations: 6
 """
 
 
-def isPrimeNumber(n):
-    """
-    isPrimeNumber : Find is n is a prime number
-    Parameter :
-        (int) n : number
-    Return :
-        True if n is a prime number, False otherwise
-    """
-    for i in range(2, n - 1):
-        if n % i == 0:
-            return (True)
-    return (False)
-
-
 def minOperations(n):
     """
     minOperations : Calculates the fewest number of
@@ -37,26 +23,15 @@ def minOperations(n):
         Number of operations
     """
 
-    minActionNumber = 0
-    numberOfActions = 0
-    divResult = 0
-    dividedBy = 0
-
     if n <= 1:
-        return (numberOfActions)
+        return (0)
 
-    if isPrimeNumber(n) is False:
-        numberOfActions = n
-        return (numberOfActions)
+    k = 2
 
-    for i in range(2, n - 1):
-        if n % i == 0:
-            divResult = n / i
-            dividedBy = i
-            numberOfActions = divResult + dividedBy
-            if minActionNumber == 0:
-                minActionNumber = numberOfActions
-            elif numberOfActions < minActionNumber:
-                minActionNumber = dividedBy + divResult
+    # Check if is prime number
+    while k * k <= n:
+        if n % k == 0:
+            return (minOperations(k) + minOperations(n // k))
+        k += 1
 
-    return (int(minActionNumber))
+    return (n)
