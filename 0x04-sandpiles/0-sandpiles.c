@@ -111,8 +111,7 @@ void elements_to_change(int grid1[3][3], int grid_elements[3][3])
 
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	int grid_elements[3][3], i, j, count = 0;
-	char *str;
+	int grid_elements[3][3], i, j;
 
 	matrix_add(grid1, grid2);
 	elements_to_change(grid1, grid_elements);
@@ -138,16 +137,13 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 			if (i == 2 && j == 2)
 			{
 				elements_to_change(grid1, grid_elements);
-				if (count < 1)
-				{
-					printf("=\n");
-					count++;
-				}
-				print_grid(grid1);
-				str = grid_still_mutable(grid_elements) == TRUE ? "=\n" : "";
-				printf("%s", str);
+
 				if (grid_still_mutable(grid_elements) == TRUE)
+				{
 					i = -1;
+					printf("=\n");
+					print_grid(grid1);
+				}
 			}
 		}
 	}
