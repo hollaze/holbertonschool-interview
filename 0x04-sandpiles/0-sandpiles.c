@@ -46,7 +46,7 @@ void matrix_add(int grid1[3][3], int grid2[3][3])
 /**
  * grid_still_mutable - check if the grid is still mutable
  *
- * @grid1: grid to check
+ * @grid_elements: grid to check
  *
  * Return: TRUE if grid is still mutable, FALSE otherwise
  */
@@ -54,10 +54,10 @@ void matrix_add(int grid1[3][3], int grid2[3][3])
 int grid_still_mutable(int grid_elements[3][3])
 {
 	int i, j;
-	int grid_zero[3][3] = { {0, 0, 0},
-				{0, 0, 0},
-				{0, 0, 0} };
-	
+	int grid_zero[3][3] = {{0, 0, 0},
+			       {0, 0, 0},
+			       {0, 0, 0}};
+
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
@@ -111,14 +111,11 @@ void elements_to_change(int grid1[3][3], int grid_elements[3][3])
 
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	int grid_elements[3][3];
-	int i, j;
-	int count = 0;
+	int grid_elements[3][3], i, j, count = 0;
 	char *str;
 
 	matrix_add(grid1, grid2);
 	elements_to_change(grid1, grid_elements);
-	
 	printf("=\n");
 	print_grid(grid1);
 
@@ -138,7 +135,6 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 				if (j + 1 <= 2)
 					grid1[i][j + 1] += 1;
 			}
-
 			if (i == 2 && j == 2)
 			{
 				elements_to_change(grid1, grid_elements);
@@ -151,7 +147,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 				str = grid_still_mutable(grid_elements) == TRUE ? "=\n" : "";
 				printf("%s", str);
 				if (grid_still_mutable(grid_elements) == TRUE)
-					i = - 1;
+					i = -1;
 			}
 		}
 	}
