@@ -16,7 +16,6 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	if (size == 0 || !array)
 		return (NULL);
 
-
 	new_node = malloc(sizeof(avl_t));
 
 	if (!new_node)
@@ -27,7 +26,6 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	half = (size - 1) / 2;
 	new_node->n = array[half];
 	new_node->parent = NULL;
-	
 
 	if (half > 0)
 		left_node = sorted_array_to_avl(array, half);
