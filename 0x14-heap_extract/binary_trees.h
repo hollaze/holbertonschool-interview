@@ -23,7 +23,8 @@ typedef struct binary_tree_s heap_t;
 
 int heap_extract(heap_t **root);
 heap_t *sort(heap_t *tmp);
-void preorderTraversal(heap_t *root, heap_t **node, size_t h, size_t l);
+void preorderTraversal(heap_t *root, heap_t **node,
+			size_t height, size_t layer);
 void binary_tree_print(const binary_tree_t *tree);
 
 #endif /* BINARY_TREES_H */
