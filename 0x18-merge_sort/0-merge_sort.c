@@ -1,13 +1,13 @@
 #include "sort.h"
 
 /**
- * Merge_sort - sort an array using merge sort
+ * merge_sort - sort an array using merge sort
  *
  * @array: array to sort
  * @size: size of the array
  */
 
-void Merge_sort(int *array, size_t size)
+void merge_sort(int *array, size_t size)
 {
 	int *copy;
 	size_t i = 0;
@@ -17,7 +17,7 @@ void Merge_sort(int *array, size_t size)
 	for (i = 0; i < size; i++)
 		copy[i] = array[i];
 
-	split(array, 0, size, copy);
+	Split(array, 0, size, copy);
 
 	free(copy);
 }
@@ -39,8 +39,8 @@ void Split(int *array, int start, int end, int *copy)
 	if (end - start <= 1)
 		return;
 
-	split(copy, start, mid, array);
-	split(copy, mid, end, array);
+	Split(copy, start, mid, array);
+	Split(copy, mid, end, array);
 	printf("Merging...\n");
 	printf("[left]: ");
 
@@ -60,7 +60,7 @@ void Split(int *array, int start, int end, int *copy)
 			printf(", ");
 	}
 
-	merge(array, start, mid, end, copy);
+	Merge(array, start, mid, end, copy);
 
 	printf("\n");
 	printf("[Done]: ");
