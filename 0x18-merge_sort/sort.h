@@ -7,7 +7,7 @@
 
 void print_array(const int *array, size_t size);
 void merge_sort(int *array, size_t size);
-void Merge(int *array, int start, int mid, int end, int *copy);
+void Merge(int *array, int start, int middle, int end, int *copy);
 void Split(int *array, int start, int end, int *copy);
 
 #endif /* SORT_H */
