@@ -26,23 +26,21 @@ def minCoins(coins, total):
     """
     Find the minimum coins needed to make the change
     """
-    table = [0 for i in range(total + 1)]
-    table[0] = 0
+    sum = 0
 
-    for i in range(1, total + 1):
-        table[i] = sys.maxsize
+    if (total <= 0):
+        return 0
 
-    for i in range(1, total + 1):
-        for j in range(len(coins)):
+    coins.sort(reverse=True)
 
-            if (coins[j] <= i):
-                sub_res = table[i - coins[j]]
+    for i in coins:
 
-                if (sub_res != sys.maxsize and
-                        sub_res + 1 < table[i]):
-                    table[i] = sub_res + 1
+        quotient, rest = divmod(total, i)
 
-    if table[total] == sys.maxsize:
+        total = rest
+        sum += quotient
+
+    if (total != 0):
         return -1
 
-    return table[total]
+    return sum
