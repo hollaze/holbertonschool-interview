@@ -31,5 +31,6 @@ typedef struct binary_tree_s avl_t;
 void binary_tree_print(const binary_tree_t *);
 int binary_tree_is_avl(const binary_tree_t *tree);
 int is_valid_avl(const binary_tree_t *tree, int *height, int min, int max);
+binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 
 #endif /* BINARY_TREES_H */
